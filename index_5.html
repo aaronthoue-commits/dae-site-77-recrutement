@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DAE — Département des Affaires Externes · Site-77</title>
+<meta name="description" content="Recrutement — Département des Affaires Externes, Site-77. Fondation SCP RP FR (Roblox).">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --noir: #0a0a0c;
+    --anthracite: #16171a;
+    --anthracite-2: #1e2023;
+    --metal: #4a4d52;
+    --metal-soft: #33353a;
+    --blanc-casse: #e9e6df;
+    --blanc-dim: #9a9994;
+    --rouge: #7a1414;
+    --rouge-vif: #a41f1f;
+    --line: #2b2d31;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background: var(--noir);
+    color: var(--blanc-casse);
+    font-family: 'IBM Plex Sans', sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection{ background: var(--rouge); color: var(--blanc-casse); }
+
+  .mono{ font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.04em; }
+  .display{ font-family: 'Oswald', sans-serif; text-transform: uppercase; letter-spacing: 0.03em; }
+
+  /* Bandeau de classification */
+  .classbar{
+    background: var(--rouge);
+    color: var(--blanc-casse);
+    text-align: center;
+    padding: 8px 12px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-family: 'IBM Plex Mono', monospace;
+    border-bottom: 1px solid #000;
+  }
+
+  header.hero{
+    position: relative;
+    padding: 90px 24px 70px;
+    max-width: 980px;
+    margin: 0 auto;
+    border-bottom: 1px solid var(--line);
+    overflow: hidden;
+  }
+  .eyebrow{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--blanc-dim);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .eyebrow::before{
+    content: "";
+    width: 22px; height: 1px;
+    background: var(--rouge-vif);
+    display: inline-block;
+  }
+  h1.display{
+    font-size: clamp(2.4rem, 6vw, 4.4rem);
+    line-height: 1.02;
+    font-weight: 700;
+    color: var(--blanc-casse);
+  }
+  h1.display span{ color: var(--rouge-vif); }
+  .lede{
+    margin-top: 26px;
+    max-width: 620px;
+    color: var(--blanc-dim);
+    font-size: 1.05rem;
+  }
+  .hero-cta{
+    margin-top: 40px;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .btn{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 14px 26px;
+    border: 1px solid var(--metal);
+    background: transparent;
+    color: var(--blanc-casse);
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: border-color .15s ease, background .15s ease;
+  }
+  .btn:hover{ border-color: var(--rouge-vif); }
+  .btn.primary{
+    background: var(--rouge);
+    border-color: var(--rouge);
+  }
+  .btn.primary:hover{ background: var(--rouge-vif); border-color: var(--rouge-vif); }
+
+  /* Tampon décoratif */
+  .stamp{
+    position: absolute;
+    top: 60px; right: 0;
+    border: 3px solid var(--rouge-vif);
+    color: var(--rouge-vif);
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 600;
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    padding: 10px 16px;
+    transform: rotate(8deg);
+    opacity: 0.55;
+    text-transform: uppercase;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+
+  section{ padding: 70px 24px; max-width: 980px; margin: 0 auto; border-bottom: 1px solid var(--line); }
+  section:last-of-type{ border-bottom: none; }
+
+  .section-head{ margin-bottom: 40px; }
+  .section-num{
+    font-family: 'IBM Plex Mono', monospace;
+    color: var(--rouge-vif);
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+  }
+  h2.display{
+    font-size: clamp(1.5rem, 3.4vw, 2.1rem);
+    margin-top: 8px;
+  }
+  .section-sub{ color: var(--blanc-dim); margin-top: 10px; max-width: 640px; }
+
+  /* Postes */
+  .postes{ display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  @media (max-width: 720px){ .postes{ grid-template-columns: 1fr; } }
+  .poste{
+    background: var(--anthracite);
+    border: 1px solid var(--line);
+    padding: 28px;
+    position: relative;
+  }
+  .poste::before{
+    content: "";
+    position: absolute; left:0; top:0; bottom:0;
+    width: 3px; background: var(--rouge-vif);
+  }
+  .poste-tag{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--rouge-vif);
+    letter-spacing: 0.12em;
+  }
+  .poste h3{
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    font-size: 1.25rem;
+    margin: 10px 0 14px;
+    letter-spacing: 0.02em;
+  }
+  .poste p{ color: var(--blanc-dim); font-size: 0.95rem; margin-bottom: 16px; }
+  .poste ul{ list-style: none; }
+  .poste li{
+    font-size: 0.88rem;
+    color: var(--blanc-casse);
+    padding-left: 16px;
+    position: relative;
+    margin-bottom: 8px;
+  }
+  .poste li::before{
+    content: "—";
+    position: absolute; left: 0; color: var(--metal);
+  }
+
+  /* Redaction lines decor */
+  .redacted{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 34px;
+    opacity: 0.5;
+  }
+  .redacted div{ height: 10px; background: var(--metal-soft); }
+  .redacted div:nth-child(1){ width: 92%; }
+  .redacted div:nth-child(2){ width: 76%; }
+  .redacted div:nth-child(3){ width: 84%; }
+
+  .steps-mini{ display: flex; flex-direction: column; gap: 14px; }
+  .steps-mini div{
+    font-size: 0.92rem;
+    color: var(--blanc-dim);
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--line);
+  }
+  .steps-mini div:last-child{ border-bottom: none; padding-bottom: 0; }
+  .steps-mini span{ color: var(--rouge-vif); margin-right: 12px; }
+
+  /* Formulaire */
+  form{ display: flex; flex-direction: column; gap: 22px; margin-top: 10px; }
+  .field{ display: flex; flex-direction: column; gap: 8px; }
+  .field label{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.76rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--blanc-dim);
+  }
+  .field .req{ color: var(--rouge-vif); }
+  input[type=text], input[type=email], select, textarea{
+    background: var(--anthracite-2);
+    border: 1px solid var(--line);
+    color: var(--blanc-casse);
+    padding: 13px 14px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color .15s ease;
+  }
+  input:focus, select:focus, textarea:focus{ border-color: var(--rouge-vif); }
+  textarea{ resize: vertical; min-height: 120px; }
+  .row2{ display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  @media (max-width: 640px){ .row2{ grid-template-columns: 1fr; } }
+
+  select{ appearance: none; -webkit-appearance:none;
+    background-image: linear-gradient(45deg, transparent 50%, var(--blanc-dim) 50%), linear-gradient(135deg, var(--blanc-dim) 50%, transparent 50%);
+    background-position: calc(100% - 20px) center, calc(100% - 15px) center;
+    background-size: 5px 5px, 5px 5px;
+    background-repeat: no-repeat;
+  }
+
+  .submit-row{ display: flex; align-items: center; gap: 18px; margin-top: 6px; flex-wrap: wrap; }
+  .status{ font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; }
+  .status.ok{ color: #6fae6f; }
+  .status.err{ color: var(--rouge-vif); }
+  .status.pending{ color: var(--blanc-dim); }
+
+  .checkline{
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 0.88rem;
+    color: var(--blanc-dim);
+    cursor: pointer;
+  }
+  .checkline input{
+    margin-top: 3px;
+    accent-color: var(--rouge-vif);
+    width: 16px; height: 16px;
+    flex-shrink: 0;
+  }
+
+  footer{
+    padding: 40px 24px 60px;
+    max-width: 980px;
+    margin: 0 auto;
+    color: var(--blanc-dim);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.78rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior: auto; }
+    *{ transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="classbar">Fondation SCP — Site-77 · Document interne · Diffusion restreinte au personnel niveau 2 et supérieur</div>
+
+<header class="hero">
+  <div class="stamp">Recrutement<br>en cours</div>
+  <div class="eyebrow mono">Département des Affaires Externes — Site-77</div>
+  <h1 class="display">Nous ne contrôlons pas<br>le monde extérieur.<br><span>Nous contrôlons ce qu'il sait.</span></h1>
+  <p class="lede">Le DAE gère l'ensemble des relations du Site-77 avec les organisations civiles, les gouvernements et les groupes d'intérêt. Une candidature ouverte pour deux postes est actuellement en cours de traitement.</p>
+  <div class="hero-cta">
+    <a href="#postes" class="btn">Voir les postes</a>
+    <a href="#candidature" class="btn primary">Déposer ma candidature</a>
+  </div>
+</header>
+
+<section id="dae">
+  <div class="section-head">
+    <div class="section-num mono">01 — Présentation</div>
+    <h2 class="display">Le Département des Affaires Externes</h2>
+    <p class="section-sub">Le DAE constitue l'interface diplomatique du Site-77. Il négocie, surveille et façonne la perception publique de la Fondation auprès des tiers non-initiés comme des groupes d'intérêt actifs.</p>
+  </div>
+  <div class="redacted">
+    <div></div><div></div><div></div>
+  </div>
+</section>
+
+<section id="processus">
+  <div class="section-head">
+    <div class="section-num mono">— Après l'envoi</div>
+    <h2 class="display" style="font-size:1.3rem;">Ce qu'il se passe ensuite</h2>
+  </div>
+  <div class="steps-mini">
+    <div><span class="mono">01</span> Votre dossier est transmis à la direction du DAE.</div>
+    <div><span class="mono">02</span> Il est examiné sous quelques jours.</div>
+    <div><span class="mono">03</span> Vous êtes recontacté directement sur Discord.</div>
+  </div>
+</section>
+
+<section id="postes">
+  <div class="section-head">
+    <div class="section-num mono">02 — Postes ouverts</div>
+    <h2 class="display">Deux fonctions à pourvoir</h2>
+    <p class="section-sub">Chaque poste est rattaché à la chaîne de commandement du DAE et implique un accès aux dossiers de relations extérieures correspondant à son niveau.</p>
+  </div>
+  <div class="postes">
+    <div class="poste">
+      <div class="poste-tag mono">Niveau L3</div>
+      <h3>Responsable des Relations</h3>
+      <p>Supervise les négociations avec les groupes d'intérêt et coordonne les diplomates sur le terrain.</p>
+      <ul>
+        <li>Encadrement de l'unité FIM-Delta-7</li>
+        <li>Validation des accords diplomatiques</li>
+        <li>Rapport direct à la direction du Site-77</li>
+      </ul>
+    </div>
+    <div class="poste">
+      <div class="poste-tag mono">Niveau L2</div>
+      <h3>Diplomate</h3>
+      <p>Assure la liaison directe avec les groupes d'intérêt et les organisations civiles identifiées.</p>
+      <ul>
+        <li>Missions de terrain et négociation</li>
+        <li>Rédaction de comptes-rendus de contact</li>
+        <li>Application des protocoles de confidentialité</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="candidature">
+  <div class="section-head">
+    <div class="section-num mono">03 — Candidature</div>
+    <h2 class="display">Dossier de candidature</h2>
+    <p class="section-sub">Merci de compléter l'intégralité du formulaire. Les champs marqués <span style="color:var(--rouge-vif)">*</span> sont obligatoires. Votre dossier est transmis directement à la direction du DAE.</p>
+  </div>
+
+  <form id="candid-form">
+    <div class="row2">
+      <div class="field">
+        <label for="pseudo">Pseudo Roblox <span class="req">*</span></label>
+        <input type="text" id="pseudo" name="pseudo" required autocomplete="off">
+      </div>
+      <div class="field">
+        <label for="discord">Identifiant Discord <span class="req">*</span></label>
+        <input type="text" id="discord" name="discord" placeholder="pseudo#0000 ou @pseudo" required autocomplete="off">
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="poste">Poste visé <span class="req">*</span></label>
+      <select id="poste" name="poste" required>
+        <option value="" disabled selected>Sélectionner un poste</option>
+        <option value="L3 — Responsable des Relations">L3 — Responsable des Relations</option>
+        <option value="L2 — Diplomate">L2 — Diplomate</option>
+      </select>
+    </div>
+
+    <div class="row2">
+      <div class="field">
+        <label for="age">Âge réel <span class="req">*</span></label>
+        <input type="text" id="age" name="age" placeholder="Ex : 17 ans" required autocomplete="off">
+      </div>
+      <div class="field">
+        <label for="anciennete">Ancienneté sur le serveur <span class="req">*</span></label>
+        <input type="text" id="anciennete" name="anciennete" placeholder="Ex : 3 mois" required autocomplete="off">
+      </div>
+    </div>
+
+    <div class="row2">
+      <div class="field">
+        <label for="experience">Expérience RP / autres départements</label>
+        <input type="text" id="experience" name="experience" placeholder="Ex : ancien MTF, aucune expérience..." autocomplete="off">
+      </div>
+      <div class="field">
+        <label for="dispo">Disponibilités <span class="req">*</span></label>
+        <input type="text" id="dispo" name="dispo" placeholder="Ex : soirs de semaine, week-ends..." required autocomplete="off">
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="connu">Comment avez-vous connu le Site-77 ?</label>
+      <select id="connu" name="connu">
+        <option value="Non précisé" selected>Sélectionner (optionnel)</option>
+        <option value="Ami / bouche-à-oreille">Ami / bouche-à-oreille</option>
+        <option value="Discord">Discord</option>
+        <option value="Roblox (recherche / recommandation)">Roblox (recherche / recommandation)</option>
+        <option value="YouTube / réseaux sociaux">YouTube / réseaux sociaux</option>
+        <option value="Autre">Autre</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="motivation">Pourquoi voulez-vous rejoindre le DAE ? <span class="req">*</span></label>
+      <textarea id="motivation" name="motivation" required placeholder="Présentez vos motivations et ce qui vous qualifie pour ce poste."></textarea>
+    </div>
+
+    <div class="field">
+      <label for="scenario1">Mise en situation 1 <span class="req">*</span></label>
+      <textarea id="scenario1" name="scenario1" required placeholder="Un groupe d'intérêt hostile menace de divulguer des informations sur le Site-77 à la presse. Comment réagissez-vous en tant que membre du DAE ?"></textarea>
+    </div>
+
+    <div class="field">
+      <label for="scenario2">Mise en situation 2 <span class="req">*</span></label>
+      <textarea id="scenario2" name="scenario2" required placeholder="Un civil témoin d'une brèche vous contacte, paniqué. Comment gérez-vous la situation pour préserver la confidentialité du Site ?"></textarea>
+    </div>
+
+    <div class="field">
+      <label for="scenario3">Mise en situation 3 <span class="req">*</span></label>
+      <textarea id="scenario3" name="scenario3" required placeholder="Un supérieur vous demande de négocier un accord avec un groupe d'intérêt dont les intentions restent floues. Quelle est votre approche ?"></textarea>
+    </div>
+
+    <label class="checkline">
+      <input type="checkbox" id="reglement" name="reglement" required>
+      <span>J'ai lu et j'accepte le règlement du Site-77 et du DAE <span class="req">*</span></span>
+    </label>
+
+    <div class="submit-row">
+      <button type="submit" class="btn primary" id="submit-btn">Envoyer ma candidature</button>
+      <span class="status mono" id="form-status"></span>
+    </div>
+  </form>
+</section>
+
+<footer>
+  <span>FONDATION SCP — SITE-77 · DÉPARTEMENT DES AFFAIRES EXTERNES</span>
+  <span>Rejoignez les Affaires Extérieures</span>
+</footer>
+
+<script>
+  const WEBHOOK_URL = "https://discord.com/api/webhooks/1541526307089678447/mHXwvAVgG48XDJlCcOBXvfEi2x93Qz-NDZC8wUnK54yUUk6pZN9OCPV_MLQ9Y0-DMQdr";
+
+  const form = document.getElementById('candid-form');
+  const statusEl = document.getElementById('form-status');
+  const submitBtn = document.getElementById('submit-btn');
+
+  function truncate(str, max){
+    return str.length > max ? str.slice(0, max - 1) + "…" : str;
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const pseudo = document.getElementById('pseudo').value.trim();
+    const discord = document.getElementById('discord').value.trim();
+    const poste = document.getElementById('poste').value;
+    const age = document.getElementById('age').value.trim();
+    const anciennete = document.getElementById('anciennete').value.trim();
+    const experience = document.getElementById('experience').value.trim() || "Aucune / non précisée";
+    const dispo = document.getElementById('dispo').value.trim();
+    const connu = document.getElementById('connu').value;
+    const motivation = document.getElementById('motivation').value.trim();
+    const scenario1 = document.getElementById('scenario1').value.trim();
+    const scenario2 = document.getElementById('scenario2').value.trim();
+    const scenario3 = document.getElementById('scenario3').value.trim();
+    const reglement = document.getElementById('reglement').checked;
+
+    if(!pseudo || !discord || !poste || !age || !anciennete || !dispo || !motivation || !scenario1 || !scenario2 || !scenario3){
+      statusEl.textContent = "Merci de compléter tous les champs obligatoires.";
+      statusEl.className = "status mono err";
+      return;
+    }
+    if(!reglement){
+      statusEl.textContent = "Merci de confirmer avoir lu le règlement.";
+      statusEl.className = "status mono err";
+      return;
+    }
+
+    submitBtn.disabled = true;
+    statusEl.textContent = "Transmission du dossier en cours...";
+    statusEl.className = "status mono pending";
+
+    const isL3 = poste.startsWith("L3");
+    const candidId = "DAE-" + Date.now().toString(36).toUpperCase();
+
+    const payload = {
+      embeds: [{
+        author: { name: "Candidature — Département des Affaires Externes" },
+        title: (isL3 ? "🔴 " : "⚪ ") + poste,
+        color: isL3 ? 9116186 : 6183503,
+        fields: [
+          { name: "Pseudo Roblox", value: pseudo, inline: true },
+          { name: "Discord", value: discord, inline: true },
+          { name: "Âge", value: age, inline: true },
+          { name: "Ancienneté sur le serveur", value: anciennete, inline: true },
+          { name: "Disponibilités", value: dispo, inline: true },
+          { name: "Connu via", value: connu, inline: true },
+          { name: "Expérience RP / autres départements", value: truncate(experience, 500), inline: false },
+          { name: "Motivation", value: truncate(motivation, 1000), inline: false },
+          { name: "Mise en situation 1", value: truncate(scenario1, 1000), inline: false },
+          { name: "Mise en situation 2", value: truncate(scenario2, 1000), inline: false },
+          { name: "Mise en situation 3", value: truncate(scenario3, 1000), inline: false }
+        ],
+        footer: { text: "Dossier " + candidId + " · Règlement accepté" },
+        timestamp: new Date().toISOString()
+      }]
+    };
+
+    try{
+      const res = await fetch(WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+
+      if(res.ok || res.status === 204){
+        statusEl.textContent = "Dossier transmis avec succès. Vous serez recontacté sur Discord.";
+        statusEl.className = "status mono ok";
+        form.reset();
+      } else {
+        statusEl.textContent = "Échec de la transmission (erreur " + res.status + "). Réessayez.";
+        statusEl.className = "status mono err";
+      }
+    } catch(err){
+      statusEl.textContent = "Échec de la transmission. Vérifiez votre connexion et réessayez.";
+      statusEl.className = "status mono err";
+    } finally {
+      submitBtn.disabled = false;
+    }
+  });
+</script>
+
+</body>
+</html>
